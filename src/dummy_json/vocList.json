@@ -1,0 +1,58 @@
+[
+    {
+        "index":1
+        ,"category":"문의"
+        ,"com_cd":"keienkor"
+        ,"comp_name":"케이엔코리아"
+        ,"sol_gbn":"유통"
+        ,"from_date":"2020-05-01"
+        ,"to_date":"2020-05-03"
+        ,"title":"케이엔"
+        ,"text":"테스트1"
+        ,"stat":"2"
+        ,"reg_id":"김성호"
+        ,"reg_date":"2020-06-05"
+    },
+    {
+        "index":2
+        ,"category":"자료요청"
+        ,"com_cd":"cowaylst"
+        ,"comp_name":"코웨이"
+        ,"sol_gbn":"유통"
+        ,"from_date":"2020-05-21"
+        ,"to_date":"2020-05-23"
+        ,"title":"사방넷 커스터마이징"
+        ,"text":"테스트1"
+        ,"stat":"3"
+        ,"reg_id":"이진원"
+        ,"reg_date":"2020-06-05"
+    },
+    {
+        "index":3
+        ,"category":"문의"
+        ,"com_cd":"lesvins"
+        ,"comp_name":"레벵드메일"
+        ,"sol_gbn":"유통"
+        ,"from_date":"2020-05-11"
+        ,"to_date":"2020-05-13"
+        ,"title":"레벵드 이마트 매출"
+        ,"text":"안나옴"
+        ,"stat":"1"
+        ,"reg_id":"임미연"
+        ,"reg_date":"2020-06-05"
+    },
+    {
+        "index":4
+        ,"category":"컴플레인"
+        ,"com_cd":"ohbaksa1"
+        ,"comp_name":"오박사"
+        ,"sol_gbn":"유통"
+        ,"from_date":"2020-05-01"
+        ,"to_date":"2020-05-30"
+        ,"title":"오박사 사방넷"
+        ,"text":"주문 너무 많음"
+        ,"stat":"3"
+        ,"reg_id":"김민경"
+        ,"reg_date":"2020-06-05"
+    }
+]

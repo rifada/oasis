@@ -1,0 +1,15 @@
+[
+    {"text":"번호", "sortable":false, "value":"index"},
+    {"text":"회사코드", "value":"com_cd"},
+    {"text":"회사명","value":"comp_name"},
+    {"text":"사용료","value":"charge"},
+    {"text":"가입일","value":"join_date"},
+    {"text":"pos 사용여부","value":"pos_yn"},
+    {"text":"매장관리 사용여부","value":"storemng"},
+    {"text":"솔루션구분","value":"sol_gbn"},
+    {"text":"해지여부","value":"cancel_yn"},
+    {"text":"상품수","value":"sku_cnt"},
+    {"text":"매장수","value":"sto_cnt"},
+    {"text":"매입처수","value":"vendor_cnt"},
+    {"text":"매입처수수","value":"vend_cnt"}
+]

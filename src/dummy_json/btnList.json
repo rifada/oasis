@@ -1,0 +1,27 @@
+[
+    {
+        "btn_id":"fadd"
+        ,"text":"Add"
+        ,"color":"blue"
+    },
+    {
+        "btn_id":"fsearch"
+        ,"text":"Search"
+        ,"color":"green"
+    },
+    {
+        "btn_id":"fsave"
+        ,"text":"Save"
+        ,"color":"green"
+    },
+    {
+        "btn_id":"fexcel"
+        ,"text":"Excel"
+        ,"color":"yellow"
+    },
+    {
+        "btn_id":"finit"
+        ,"text":"Init"
+        ,"color":"green"
+    }
+]
