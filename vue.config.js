@@ -6,6 +6,7 @@ module.exports = {
   ],
   outputDir: path.resolve(__dirname, "./docs/"),
   assetsDir: "./static/"
+  
   // outputDir: path.resolve(__dirname, "../springboot/src/main/resources/static"),
   // assetsDir: "./static/"
 }
