@@ -2,6 +2,7 @@
     {
         "index":1
         ,"category":"문의"
+        ,"code":"1"
         ,"com_cd":"keienkor"
         ,"comp_name":"케이엔코리아"
         ,"sol_gbn":"유통"
@@ -16,6 +17,7 @@
     {
         "index":2
         ,"category":"자료요청"
+        ,"code":"2"
         ,"com_cd":"cowaylst"
         ,"comp_name":"코웨이"
         ,"sol_gbn":"유통"
@@ -29,7 +31,8 @@
     },
     {
         "index":3
-        ,"category":"문의"
+        ,"category":"개선"
+        ,"code":"3"
         ,"com_cd":"lesvins"
         ,"comp_name":"레벵드메일"
         ,"sol_gbn":"유통"
@@ -43,7 +46,8 @@
     },
     {
         "index":4
-        ,"category":"컴플레인"
+        ,"category":"일정"
+        ,"code":"4"
         ,"com_cd":"ohbaksa1"
         ,"comp_name":"오박사"
         ,"sol_gbn":"유통"

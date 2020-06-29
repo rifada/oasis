@@ -50,8 +50,8 @@ export default {
             this.btns = btnList
         },
         btnClick(btnId) {
-            console.log(btnId)
-            console.log(this.prog_cd)
+            // console.log(btnId)
+            // console.log(this.prog_cd)
             this.$emit('btnAction', btnId)
         }
     }

@@ -67,38 +67,39 @@ export default {
     methods :{
         ...mapActions(['getToken']),
         validator(){
-            if(this.comCd === null){
+            
+            if((this.userId === null) || (this.password === null)){
                 this.isFail=true
-            }
-            if(this.userId === null){
-                this.isFail=true
+                setTimeout(()=>{this.isFail=false},2000)
                 return
             }
-            if(this.password === null){
-                this.isFail=true
-                return
-            }
+           
             this.login()
         },
         login(){
-            //this.isFail=false
-            // this.$http({
-            //     methods:'post',
-            //     url:'http://localhost:7070/login',
-            //     data:form,
-            //     headers: {'Content-Type': 'multipart/form-data' }
-            // })
-            // .then(res=>{
-            //     console.log(res.status)
-            //     // this.getToken(res.data)
-            //     // this.$router.push({name : "main"})
-            // })
-            // .catch(err =>{
-            //     console.log(err)
-            // })
-            //this.isFail=true
-            this.getToken("test")
-            this.$router.push({name : "main"})
+
+            let form = new FormData()
+            form.append('username', this.userId)
+            form.append('passowrd', this.password)
+
+            this.$http({
+                methods:'post',
+                url:'/login',
+                data:form,
+                headers: {'Content-Type': 'multipart/form-data' }
+            })
+            .then(res=>{
+                console.log(res)
+                this.isFail=true
+                this.getToken(res.data)
+                this.$router.push({name : "main"})
+            })
+            .catch(err =>{
+                console.log(err)
+            })
+            // this.isFail=true
+            // this.getToken("test")
+            // this.$router.push({name : "main"})
         }
     }
 }

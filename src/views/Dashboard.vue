@@ -1,30 +1,42 @@
 <template>
         <v-container fluid>
+
+          <!--Dashboard widget Row -->
+
+          <v-row
+                align="center"
+                justify="center"
+                style="height:100px">
+                <v-col cols="4">
+                        <widget icon="mdi-calendar-check" title="1,287,687" subTitle= '13% higher yesterday' supTitle="Today's Visits" color="red"/>
+                </v-col>
+                <v-col cols="4">
+                        <widget icon="mdi-calendar-clock" title="1,287,687" subTitle= '13% higher yesterday' supTitle="Today's Visits" color="yellow"/>
+                </v-col>
+                <v-col cols="4">
+                        <widget icon="mdi-calendar-multiple-check" title="1,287,687" subTitle= '13% higher yesterday' supTitle="Today's Visits" color="green"/>
+                </v-col>
+            </v-row>
+
             <v-row
                 align="center"
                 justify="center"
                 style="height:100px">
                 <v-col cols="4">
-                        <v-card
-                            color="red"
-                            >red
-                        </v-card>
+                        <widget icon="mdi-calendar-check" title="1,287,687" subTitle= '13% higher yesterday' supTitle="Today's Visits" color="#00b297"/>
                 </v-col>
                 <v-col cols="4">
-                        <v-card
-                            color="green"
-                            >green
-                        </v-card>
+                        <widget icon="mdi-calendar-clock" title="1,287,687" subTitle= '13% higher yesterday' supTitle="Today's Visits" color="#dc3545"/>
                 </v-col>
                 <v-col cols="4">
-                        <v-card
-                            color="blue"
-                            >blue
-                        </v-card>
+                        <widget icon="mdi-calendar-multiple-check" title="1,287,687" subTitle= '13% higher yesterday' supTitle="Today's Visits" color="#0866C6"/>
                 </v-col>
             </v-row>
 
-            <v-row>
+            
+
+            <!--Dashboard Calendar Row -->
+            <v-row class="fill-height">
                 <v-col>
                     <v-sheet height="64">
                         
@@ -45,29 +57,30 @@
                             <v-spacer></v-spacer>
                             
                             <v-menu bottom right>
-                                <template v-slot:activator="{ on }">
-                                <v-btn
-                                    outlined
-                                    color="yellow"
-                                    v-on="on"
-                                >
-                                    <span>{{ typeToLabel[type] }}</span>
-                                    <v-icon right>mdi-menu-down</v-icon>
-                                </v-btn>
+                                <template v-slot:activator="{ on, attrs }">
+                                  <v-btn
+                                      outlined
+                                      color="yellow"
+                                      v-bind="attrs"
+                                      v-on="on"
+                                  >
+                                      <span>{{ typeToLabel[type] }}</span>
+                                      <v-icon right>mdi-menu-down</v-icon>
+                                  </v-btn>
                                 </template>
                                 <v-list>
-                                <v-list-item @click="type = 'day'">
-                                    <v-list-item-title>Day</v-list-item-title>
-                                </v-list-item>
-                                <v-list-item @click="type = 'week'">
-                                    <v-list-item-title>Week</v-list-item-title>
-                                </v-list-item>
-                                <v-list-item @click="type = 'month'">
-                                    <v-list-item-title>Month</v-list-item-title>
-                                </v-list-item>
-                                <v-list-item @click="type = '4day'">
-                                    <v-list-item-title>4 days</v-list-item-title>
-                                </v-list-item>
+                                  <v-list-item @click="type = 'day'">
+                                      <v-list-item-title>Day</v-list-item-title>
+                                  </v-list-item>
+                                  <v-list-item @click="type = 'week'">
+                                      <v-list-item-title>Week</v-list-item-title>
+                                  </v-list-item>
+                                  <v-list-item @click="type = 'month'">
+                                      <v-list-item-title>Month</v-list-item-title>
+                                  </v-list-item>
+                                  <v-list-item @click="type = '4day'">
+                                      <v-list-item-title>4 days</v-list-item-title>
+                                  </v-list-item>
                                 </v-list>
                             </v-menu>
                         </v-toolbar>
@@ -100,12 +113,14 @@
 
 <script>
 import popVoc from '../components/PopVoc.vue'
+import widget from '../components/Widget.vue'
 
-// import vocList from '../dummy_json/vocList.json'
+import calList from '../dummy_json/calList.json'
 
 export default {
     components :{
-        popVoc,
+      widget,
+      popVoc,
     },
     data: () => ({
       focus: '',
@@ -116,8 +131,8 @@ export default {
         day: 'Day',
         '4day': '4 Days',
       },
-      start: null,
-      end: null,
+      // start: null,
+      // end: null,
       selectedEvent: {},
       selectedElement: null,
       selectedOpen: false,
@@ -165,7 +180,6 @@ export default {
     },
     mounted () {
       this.$refs.calendar.checkChange()
-      //this.events = vocList
     },
     methods: {
       viewDay ({ date }) {
@@ -200,34 +214,8 @@ export default {
 
         nativeEvent.stopPropagation()
       },
-      updateRange ({ start, end }) {
-        const events = []
-
-    //     const min = new Date(`${start.date}T00:00:00`)
-    //     const max = new Date(`${end.date}T23:59:59`)
-    //     const days = (max.getTime() - min.getTime()) / 86400000
-    //     const eventCount = this.rnd(days, days + 20)
-
-    //     for (let i = 0; i < eventCount; i++) { 
-    //       const allDay = this.rnd(0, 3) === 0
-    //       const firstTimestamp = this.rnd(min.getTime(), max.getTime())
-    //       const first = new Date(firstTimestamp - (firstTimestamp % 900000))
-    //       const secondTimestamp = this.rnd(2, allDay ? 288 : 8) * 900000
-    //       const second = new Date(first.getTime() + secondTimestamp)
-
-          events.push({
-            name: '테스트일정',
-            // start: new Date(`${start.date}T00:00:00`),
-            // end: new Date(`${end.date}T23:59:59`),
-            start : "2020-06-24",
-            end : "2020-06-25",
-            color: 'red',
-          })
-    //     }
-
-        this.start = start
-        this.end = end
-        this.events = events
+      updateRange () {
+        this.events = calList
       },
       nth (d) {
         return d > 3 && d < 21
