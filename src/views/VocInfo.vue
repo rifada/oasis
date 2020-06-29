@@ -5,7 +5,13 @@
                     <btnBar :prog_cd="prog"
                             @btnAction = btnAction>
                     </btnBar>
-                    
+                    <v-alert
+                        type="warning"
+                        :value="isFail"
+                        dismissible
+                        transition="scale-transition">
+                        No seledted Item!
+                    </v-alert>
                     <v-data-table
                             v-model="selected"
                             :headers="headers"
@@ -22,7 +28,7 @@
 
                  <v-dialog v-model="dialog" persistent max-width="800px">
                     <popVoc :show="dialog"
-                            :paramItem="selected"
+                            :paramItem="paramItem"
                             @popAction = popAction>
                     </popVoc>
                 </v-dialog>
@@ -47,6 +53,7 @@ export default {
         return {
             //팝업창 다이얼로그 여부
             dialog : false,
+            isFail : false,
             prog : "P002",
             model:null,
             headers :[
@@ -62,43 +69,46 @@ export default {
                 {text:"등록일",width:150,value:"reg_date"},
             ],
             list :[],
-            selected :[]
+            selected :[],
+            paramItem :{}
         }
     },
     methods : {
         btnAction(btnId){
             switch (btnId) {
                 case 'fadd':
+                    this.paramItem = {}
                     this.dialog = true
-                    console.log(this.dialog)
                     break;
                 case 'fsearch':
                     this.fsearch();
-
-                    console.log("voc")
                     break;
                 case 'fsave':
-                    this.dialog = true
-                    console.log(this.selected)
+                    if(this.selected.length>0){
+                        this.paramItem = this.selected[0]
+                        this.dialog = true
+                    }else{
+                        this.isFail = true
+                        setTimeout(()=>{this.isFail=false},2000)
+                    }
                     break;
                 case 'fexcel':
-                    console.log("엑셀저장버튼")
                     //this.exportexcel()
                     break;
+                case 'finit':
+                    this.list =[]
+                    break
                 default:
-                    console.log("버튼정의 없음")
                     break;
             }
         },
         popAction(param){
             switch (param.id) {
                 case 'popSave':
-                    console.log("popSave")
                     this.list.push(param.callback)
                     this.dialog = false
                     break;
                 case 'popClose':
-                    console.log("popClose")
                     this.dialog = false
                     break;
             }
@@ -106,7 +116,6 @@ export default {
         },
         fsearch(){
             this.list = vocList
-            console.log("test")
         }
     }
 }

@@ -64,9 +64,8 @@ export default {
             ,selected:[]
             ,editedItem:[]
             ,headers :[
-                {text:"번호", width:80, value:'index'},
                     {text:"회사코드", width:150, value:"com_cd"},
-                    {text:"회사명", width:150,value:"comp_name"},
+                    {text:"회사명", width:120,value:"comp_name"},
                     {text:"사용료",width:150,value:"charge"},
                     {text:"가입일",width:150,value:"join_date"},
                     {text:"pos 사용여부",width:150,value:"pos_yn"},
@@ -91,7 +90,7 @@ export default {
                     this.fsearch();
                     break;
                 case 'fsave':
-                    var selectItem = this.selected.slice(1,1)
+                    var selectItem = this.selected
                     console.log(selectItem)
                     break;
                 case 'fexcel':

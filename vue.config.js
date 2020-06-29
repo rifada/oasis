@@ -4,13 +4,9 @@ module.exports = {
   "transpileDependencies": [
     "vuetify"
   ],
+  outputDir: path.resolve(__dirname, "./docs/"),
+  assetsDir: "./static/"
 
-  // build: {
-
-  //   index: path.resolve(__dirname, '../docs/index.html'),
-
-  //   assetsRoot: path.resolve(__dirname, '../docs'),
-  //   assetsSubDirectory: 'static',
-  //   assetsPublicPath: '',
-  // }
+  // outputDir: path.resolve(__dirname, "../springboot/src/main/resources/static"),
+  // assetsDir: "./static/"
 }

@@ -5,13 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    token : null,
-    role : null
+    access_token : null,
+    scope : null
   },
   mutations: {
     setToken(state, payload){
-        state.token = payload.token,
-        state.role = payload.role
+        state.access_token = payload.access_token,
+        state.scope = payload.scope
     }
   },
   actions: {
