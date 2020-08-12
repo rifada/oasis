@@ -78,28 +78,28 @@ export default {
         },
         login(){
 
-            let form = new FormData()
-            form.append('username', this.userId)
-            form.append('passowrd', this.password)
+            // let form = new FormData()
+            // form.append('username', this.userId)
+            // form.append('passowrd', this.password)
 
-            this.$http({
-                methods:'post',
-                url:'/login',
-                data:form,
-                headers: {'Content-Type': 'multipart/form-data' }
-            })
-            .then(res=>{
-                console.log(res)
-                this.isFail=true
-                this.getToken(res.data)
-                this.$router.push({name : "main"})
-            })
-            .catch(err =>{
-                console.log(err)
-            })
+            // this.$http({
+            //     methods:'post',
+            //     url:'/login',
+            //     data:form,
+            //     headers: {'Content-Type': 'multipart/form-data' }
+            // })
+            // .then(res=>{
+            //     console.log(res)
+            //     this.isFail=true
+            //     this.getToken(res.data)
+            //     this.$router.push({name : "main"})
+            // })
+            // .catch(err =>{
+            //     console.log(err)
+            // })
             // this.isFail=true
-            // this.getToken("test")
-            // this.$router.push({name : "main"})
+            this.getToken("test")
+            this.$router.push({name : "main"})
         }
     }
 }

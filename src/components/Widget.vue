@@ -4,14 +4,14 @@
       <v-container class="pa-0">
         <div class="layout row ma-0" :style="{ backgroundColor: color }">
           <div class="sm4 xs4 flex">
-            <div class="layout column ma-0 justify-center align-center">
-              <v-icon size="76px" color="white" style="opacity: 0.8;">{{icon}}</v-icon>
+            <div class="layout column ma-2 justify-center align-center">
+              <v-icon size="65px" color="white" style="opacity: 0.8;">{{icon}}</v-icon>
             </div>
           </div>
           <div class="layout column ma-0 justify-center" style="color: white;">
             <span class="caption">{{ subTitle }}</span>
             <div class="headline">{{ title }}</div>
-            <span class="caption">{{ supTitle }}</span>
+            <span class="caption">{{ subTitle }}</span>
           </div>
         </div>
       </v-container>
@@ -22,10 +22,6 @@
 <script>
 export default {
   props: {
-    supTitle: {
-      type: String,
-      required: false
-    },
     subTitle: {
       type: String,
       required: false

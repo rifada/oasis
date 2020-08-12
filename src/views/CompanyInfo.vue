@@ -64,6 +64,7 @@ export default {
             ,selected:[]
             ,editedItem:[]
             ,headers :[
+                    {text:"번호", width:80, value:'index'},
                     {text:"회사코드", width:150, value:"com_cd"},
                     {text:"회사명", width:120,value:"comp_name"},
                     {text:"사용료",width:150,value:"charge"},

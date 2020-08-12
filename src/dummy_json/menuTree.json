@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name":"Home",
+        "icon":"mdi-folder",
+        "children": [
+            {
+                "id": 2,
+                "name":"Dashboard",
+                "icon":"mdi-file"
+            },
+            {
+                "id": 2,
+                "name": "VOC",
+                "icon":"mdi-folder",
+                "children": [
+                    {
+                        "id": 3,
+                        "name": "VocInfo",
+                        "icon":"mdi-file"
+                    },
+                    {
+                        "id": 4,
+                        "name": "CompanyInfo",
+                        "icon":"mdi-file"
+                    }
+                ]
+            }
+        ]
+    }
+    
+]

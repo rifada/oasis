@@ -8,13 +8,13 @@
                 justify="center"
                 style="height:100px">
                 <v-col cols="4">
-                        <widget icon="mdi-calendar-check" title="1,287,687" subTitle= '13% higher yesterday' supTitle="Today's Visits" color="red"/>
+                        <widget icon="mdi-calendar-check" :title="calculator" subTitle= '13% higher yesterday' supTitle="To-Do" color="red"/>
                 </v-col>
                 <v-col cols="4">
-                        <widget icon="mdi-calendar-clock" title="1,287,687" subTitle= '13% higher yesterday' supTitle="Today's Visits" color="yellow"/>
+                        <widget icon="mdi-calendar-clock" title="1,287,687" subTitle= '13% higher yesterday' supTitle="Do" color="yellow"/>
                 </v-col>
                 <v-col cols="4">
-                        <widget icon="mdi-calendar-multiple-check" title="1,287,687" subTitle= '13% higher yesterday' supTitle="Today's Visits" color="green"/>
+                        <widget icon="mdi-calendar-multiple-check" title="1,287,687" subTitle= '13% higher yesterday' supTitle="Done" color="green"/>
                 </v-col>
             </v-row>
 
@@ -172,6 +172,15 @@ export default {
       //   }
       //   return ''
       // },
+      calculator() {
+        // console.log(this.events.filter(toDo => toDo.stat===1).length)
+        const monthCnt = this.events.length
+        const toDoCnt = this.events.filter(toDo => toDo.stat===1).length
+        // const doCnt = this.events.filter(toDo => toDo.stat===2).length
+        // const doneCnt = this.events.filter(toDo => toDo.stat===3).length
+
+        return  toDoCnt + '/' + monthCnt
+      },
       monthFormatter () {
         return this.$refs.calendar.getFormatter({
           timeZone: 'UTC', month: 'long',

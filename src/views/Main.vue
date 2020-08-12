@@ -1,5 +1,5 @@
 <template>
-    <v-container id="oasis">
+    <v-container id="oasis" fluid>
             <v-navigation-drawer
                 v-model="drawer"
                 app
@@ -7,24 +7,55 @@
                 clipped
                 left
                 >
-                <v-list dense>
-                    <v-list-item
-                        v-for="menu in menuList"
-                        :key="menu.prog_cd"
-                        @click="drawerClick(menu.prog_nm)">
-                            <v-list-item-icon>
-                                <v-icon>{{ menu.icon }}</v-icon>
-                            </v-list-item-icon>
-
-                            <v-list-item-content>
-                                <v-list-item-title>{{ menu.prog_nm }}</v-list-item-title>
-                            </v-list-item-content>
-                    </v-list-item>
-                </v-list>
+                <v-card
+                    height="100%"
+                    tile
+                >
+                    <v-sheet class="pa-4 primary lighten-2">
+                        <v-text-field
+                            v-model="search"
+                            label="Search Menu"
+                            dark
+                            flat
+                            solo-inverted
+                            hide-details
+                            clearable
+                            clear-icon="mdi-close-circle-outline"
+                        ></v-text-field>
+                        <v-checkbox
+                            v-model="caseSensitive"
+                            dark
+                            hide-details
+                            label="Case sensitive search"
+                        ></v-checkbox>
+                    </v-sheet>
+                    <v-card-text>
+                        <v-treeview
+                            :items="items"
+                            :search="search"
+                            :filter="filter"
+                            :open.sync="open"
+                            :active.sync="active"
+                            item-key="name"
+                            activatable
+                            @update:active="drawerClick"
+                            open-on-click
+                        >
+                            <template v-slot:prepend="{ item }">
+                                <v-icon v-if="!item.icon">
+                                    {{ 'mdi-folder' }}
+                                </v-icon>
+                                <v-icon else>
+                                    {{item.icon}}
+                                </v-icon>
+                            </template>
+                        </v-treeview>
+                    </v-card-text>
+                </v-card>
             </v-navigation-drawer>
 
             <v-app-bar
-                color="blue"
+                color="primary lighten-2"
                 app
                 flat
                 fixed
@@ -40,9 +71,7 @@
                 </div>
             </v-app-bar>
             
-            <v-content
-                class="pa-0 ma-0"
-            >
+            
                 <v-container
                     fluid
                     >
@@ -107,7 +136,7 @@
                         </v-tabs>
                     </v-layout>
                 </v-container>
-            </v-content>
+            
     </v-container>
 </template>
 
@@ -118,7 +147,8 @@ import error from '../views/Error.vue'
 import dashboard from '../views/Dashboard.vue'
 import vocInfo from '../views/VocInfo.vue'
 
-import dummyMenuList from '../dummy_json/menuList.json'
+// import dummyMenuList from '../dummy_json/menuList.json'
+import menuTree from '../dummy_json/menuTree.json'
 
 export default {
     components:{
@@ -135,6 +165,12 @@ export default {
             tab : 0,
             tabItems : ["Dashboard"],
             moreItems : ["All Close"],
+            //new menu tree
+            open: [1, 2],
+            search: null,
+            caseSensitive: false, 
+            items : [],
+            active: [],
         }
     },
     created() {
@@ -149,17 +185,28 @@ export default {
         //     .catch(err =>{
         //         console.log(err)
         //     })
-        this.menuList = dummyMenuList
+        // this.menuList = dummyMenuList
+        this.items = menuTree
+    },
+    computed: {
+      filter () {
+        return this.caseSensitive
+          ? (item, search, textKey) => item[textKey].indexOf(search) > -1
+          : undefined
+      },
     },
     methods : {
         logout(){
             this.$router.push("/")
         },
-        drawerClick(menuName){
+        drawerClick(){
             //열려 있는 창이 있을 경우 포커싱되도록
             //없을 경우 신규로 라우팅 처리
             console.log(this.tabItems)
-            console.log(menuName)
+            console.log(this.active)
+
+            //v-tree에서 첫번째로 선택된 메뉴명
+            const menuName = this.active[0]
 
             if(this.tabItems.indexOf(menuName)<0){
                 this.tabItems.push(menuName)
@@ -167,7 +214,6 @@ export default {
             }
             
             //포커싱 되도록
-            // console.log(this.tabItems.indexOf(menuName))
             this.tab = this.tabItems.indexOf(menuName)
         },
         deleteTab(tabItem, index){
